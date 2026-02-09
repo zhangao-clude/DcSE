@@ -130,27 +130,27 @@ if __name__ == "__main__":
 
         model_configs = [
             {
-                "path": f"./Ablation/model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_1/last.pth",
+                "path": f"./model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_1/last.pth",
                 "model_class": Mymodel,
                 "weight": 1.0,
             },
             {
-                "path": f"./Ablation/model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_2/last.pth",
+                "path": f"./model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_2/last.pth",
                 "model_class": Mymodel,
                 "weight": 1.0,
             },
             {
-                "path": f"./Ablation/model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_3/last.pth",
+                "path": f"./model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_3/last.pth",
                 "model_class": Mymodel,
                 "weight": 1.0,
             },
             {
-                "path": f"./Ablation/model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_4/last.pth",
+                "path": f"./model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_4/last.pth",
                 "model_class": Mymodel,
                 "weight": 1.0,
             },
             {
-                "path": f"./Ablation/model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_5/last.pth",
+                "path": f"./model/DenseNet_SimpleCBAM_split_{i}/{species}_model/fold_5/last.pth",
                 "model_class": Mymodel,
                 "weight": 1.0,
             }
@@ -164,7 +164,7 @@ if __name__ == "__main__":
         )
 
 
-        result_dir = f"Ablation/model/DenseNet_SimpleCBAM_split_{i}/ensemble_results_new"
+        result_dir = f"/model/DenseNet_SimpleCBAM_split_{i}/ensemble_results_new"
         os.makedirs(result_dir, exist_ok=True)
         
         metrics = evaluate_ensemble(y_true, ensemble_probs, save_dir=result_dir, split_id=i)
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     aggregate_stats, metrics_data = compute_aggregate_stats(all_metrics)
     
 
-    summary_dir = f"Ablation/model/ensemble_summary_{species}"
+    summary_dir = f"/model/ensemble_summary_{species}"
     os.makedirs(summary_dir, exist_ok=True)
 
 
