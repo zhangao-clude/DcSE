@@ -47,7 +47,7 @@ class Onehot(nn.Module):
 class MuSE(nn.Module):
     def __init__(self):
         super(MuSE, self).__init__()
-        self.emb = nn.Embedding.from_pretrained(pretrain_embeddings, freeze=True)  # 维度是(batch_size, 3000, 100)
+        self.emb = nn.Embedding.from_pretrained(pretrain_embeddings, freeze=True)  
 
         self.cnn = nn.Conv1d(1, 32, 1)
         self.cnn1 = nn.Conv1d(100, 64, 41, padding=20)
@@ -97,21 +97,19 @@ class MuSE(nn.Module):
 
 
 if __name__ == '__main__':
-    # Example dimensions (adjust according to your dataset)
     embedding_matrix = torch.tensor(np.load('embedding_matrix.npy'))
     batch_size = 16
-    x1 = torch.randint(0, embedding_matrix.shape[0], (batch_size, 3000))  # Random input data for embedding layer
-    x2 = torch.randn(batch_size, 1, 300)  # Example data for CNN1 layer (can be any shape suitable for CNN)
-    x3 = torch.randn(batch_size, 3000, 4)  # Example data for Onehot CNN (assuming 4 channels and length 100)
+    x1 = torch.randint(0, embedding_matrix.shape[0], (batch_size, 3000)) 
+    x2 = torch.randn(batch_size, 1, 300)  
+    x3 = torch.randn(batch_size, 3000, 4) 
 
-    # Instantiate the DcSEResult
+
     model = MuSE()
 
-    # Forward pass
+
     output, features = model(x1, x2, x3)
 
-    # Output of the classification (softmax values)
     print("Classification Output (Softmax):", output)
 
-    # Feature vector from the penultimate layer
+
     print("Feature Vector (Before Softmax):", features)
